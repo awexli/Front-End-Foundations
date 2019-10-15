@@ -10,13 +10,6 @@ article {
 
     border-radius: 10px;
   }
-  
-  /* formula for clearing floats */
-  article:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
 
   .floatleft {
     float: left;
@@ -31,6 +24,13 @@ article {
     margin-bottom: 1rem;
     margin-right: 1rem;
     border-radius: 10px;
+  }
+
+  /* formula for clearing floats */
+  article:after {
+    content: "";
+    display: table;
+    clear: both;
   }
 
   p {
