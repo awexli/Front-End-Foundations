@@ -1,16 +1,12 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #1c76a0;
+    background-color: #2a2d2e;
     margin: 0;
     padding: 0;
 }
 
 a:link {
     text-decoration: none;
-}
-
-a:visited {
-    color: grey;
 }
 
 a:hover {
@@ -27,7 +23,7 @@ ul {
 .wrapper {
     margin: 0 auto;
     width: 70%;
-    background-color: rgb(36, 42, 44);
+    background-color: rgb(142, 155, 163);
     border-radius: 20px;
 }
 
@@ -64,8 +60,9 @@ nav a:visited {
 }
 
 article {
+    border: 3px dotted red;
     margin: 1rem;
-    color: wheat;
+    color: rgb(32, 32, 27);
 }
 
 article img {
@@ -73,7 +70,8 @@ article img {
     /* If the max-width property is set to 100%, the image will scale down if it has to, but never scale up to be larger than its original size:*/
     max-width: 100%;
     height: auto;
-    margin: 0 2rem 1rem 0;
+    margin: 0 1rem 1rem 0;
+    border: 3px solid black;
     border-radius: 1rem;
 }
 
