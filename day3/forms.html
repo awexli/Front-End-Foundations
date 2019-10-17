@@ -12,7 +12,8 @@
         <section>
             <h1>Alien Abduction Order Form</h1>
             <p>Fill out the form below to place an order for an alien abduction by one of our fine UFOs.</p>
-            <form>
+            <form action="https://e3vwdl4bpd.execute-api.us-west-2.amazonaws.com/default/API2SES" method="POST">
+                <input type="hidden" name="send_to" value="alexli415@outlook.com">
                 <fieldset>
                     <legend>Your contact information</legend>
 
@@ -20,7 +21,7 @@
                     <input type="text" id="name" name="name">
 
                     <label for="phone">Phone number</label>
-                    <input type="tel" id="phone" name="phone">
+                    <input type="tel" id="phone" name="phone" placeholder="Enter Phone Number">
 
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email">
@@ -40,19 +41,20 @@
                     <!-- The 'value' attribute specifies the initial value for an input field-->
 
                     <label>
-						<input type="radio" name="ufotype" value="classic" checked>Classic oval UFO
+						<input type="radio" name="ufotype" value="Classic oval UFO" checked>Classic oval UFO
 					</label>
 
                     <label>
-						<input type="radio" name="ufotype" value="starwars">Star Wars-style Imperial cruiser
+						<input type="radio" name="ufotype" value="Star Wars-style Imperial cruiser">Star Wars-style Imperial cruiser
 					</label>
 
                     <label>
-						<input type="radio" name="ufotype" value="battlestar">Battlestar Galactica-style Viper
+						<input type="radio" name="ufotype" value="Battlestar Galactica-style Viper">Battlestar Galactica-style Viper
 					</label>
 
                     <label>
-                    	<input type="radio" name="ufotype" value="borg">Borg-style cube</label>
+                        <input type="radio" name="ufotype" value="Borg-style cube">Borg-style cube
+                    </label>
 
                     <label for="abtype">What type of abduction experience do you want?</label>
                     <select id="abtype" name="abtype">
@@ -61,10 +63,17 @@
                         <option value="dinner">Alien dinner and discussion</option>
                         <option value="dance">Alien dance lessons</option>
                         <option value="whale">Whale watching</option>
-					</select>
-                    <p>Special requests:</p>
-                    <p>Add me to your email list</p>
+                    </select>
+
+                    <label>Special requests:</label>
+                    <textarea id="comments" name="comments"></textarea>
+
+                    <label>
+                    <input type="checkbox" value="subscribe" name="subscribe"> Add me to your email list!
+                    </label>
+
                 </fieldset>
+                <button type="submit">Submit</button>
             </form>
         </section>
         <aside>
@@ -77,6 +86,7 @@
 			</address>
         </aside>
     </div>
+    <script src="js/forms.js"></script>
 </body>
 
 </html>
