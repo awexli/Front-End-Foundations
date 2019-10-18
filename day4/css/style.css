@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #2C385C;
+    margin: 0 auto;
+    padding: 0;
+}
+
+a:link {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    background-color: rgb(235, 215, 181);
+    color: black;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 70%;
+    background-color: rgb(235, 215, 181);
+}
+
+article {
+    border-bottom: 1px solid brown;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+article img {
+    border: 0px solid black;
+    /* If the max-width property is set to 100%, the image will scale down if it has to, but never scale up to be larger than its original size:*/
+    max-width: 100%;
+    height: auto;
+    padding: 0;
+    border-radius: 1rem;
+}
+
+article:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+article ul {
+    border: 0px dotted red;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    list-style-type: none;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+article li {
+    border: 1px dotted green;
+    padding: 0;
+    margin: 0;
+    flex-basis: 10%;
+    margin-left: .5rem;
+}
+
+article a {
+    border: 0px dotted green;
+    font-size: 1rem;
+    display: block;
+    padding: .5rem;
+    background-color: crimson;
+}
+
+h2 {
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    /*debug
+    border: 1px dotted red;
+    background-color: burlywood;*/
+}
+
+section {
+    border: 0px solid red;
+}
+
+.intro {
+    text-align: center;
+    padding-bottom: 5rem;
+}
+
+@media screen and (min-width: 601px) {
+    section.intro h2 {
+        font-size: 6rem;
+        padding-top: 5rem;
+        padding-bottom: 3rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    section.intro h2 {
+        font-size: 3.5rem;
+        padding-top: 5rem;
+        padding-bottom: 3rem;
+    }
+}
+
+i {
+    border: 0px dotted red;
+    margin: 0 2rem;
+}
+
+
+/*Projects*/
+
+.projects {
+    border-top: 1px solid black;
+    background-color: white;
+}
+
+footer {
+    width: 70%;
+    background-color: rgb(235, 215, 181);
+    display: block;
+    position: absolute;
+    margin: 0 auto;
+    padding: 3rem 0;
+    text-align: center;
+}
