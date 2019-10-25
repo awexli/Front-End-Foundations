@@ -1,2 +1,3 @@
 # FrontEnd-Foundations
-FrontEnd Foundations 1
+HTML/CSS  
+Javascript  
