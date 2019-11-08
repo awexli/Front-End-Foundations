@@ -82,8 +82,8 @@ function sort(list) {
   // sort a list of numbers into ascending order
   // if you need more help, Google how to do bubble sort
   // you can sort, if you want to write it by hand, use bubble sort or insertion sort
-
-  return [1, 2, 3, 4];
+  list.sort((a, b) => a - b);
+  return list;
 }
 
 // unit tests
