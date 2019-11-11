@@ -44,6 +44,7 @@
     <script>
         let runningTotal = 0;
         let buffer = "0";
+        let displayBuffer;
         let prevOperator = null;
 
         const screen = document.querySelector('.screen');
@@ -54,7 +55,12 @@
             } else {
                 handleNumber(value);
             }
-            screen.innerText = buffer;
+            
+            if (buffer === '0') {
+                displayBuffer = runningTotal;
+            }
+            
+            screen.innerText = displayBuffer;
         }
 
         function handleSymbol(symbol) {
@@ -64,13 +70,7 @@
                     runningTotal = 0;
                     break;
                 case '=':
-                    if (prevOperator === null) {
-                        return;
-                    }
-                    flushOperation(parseInt(buffer));
-                    prevOperator = null;
-                    buffer = runningTotal;
-                    runningTotal = 0;
+                    handleEqual();
                     break;
                 case '÷':
                 case '×':
@@ -81,13 +81,24 @@
             }
         }
 
+        function handleEqual() {
+            if (prevOperator === null) {
+                return;
+            }
+            flushOperation(parseInt(buffer));
+            prevOperator = null;
+            buffer = runningTotal;
+            displayBuffer = runningTotal;
+            runningTotal = 0;
+        }
+
         function handleMath(symbol) {
             if (buffer === '0') {
                 return;
             }
 
             const intBuffer = parseInt(buffer);
-
+           
             if (runningTotal == 0) {
                 runningTotal = intBuffer;
             } else {
@@ -97,6 +108,7 @@
             prevOperator = symbol;
 
             buffer = '0';
+            
         }
 
         function flushOperation(intBuffer) {
@@ -109,8 +121,6 @@
             } else {
                 runningTotal += intBuffer;
             }
-
-            console.log(runningTotal);
         }
 
         function handleNumber(numberString) {
@@ -119,6 +129,8 @@
             } else {
                 buffer += numberString;
             }
+            
+            displayBuffer = buffer;
         }
 
         function init() {
