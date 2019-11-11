@@ -44,7 +44,7 @@
     <script>
         let runningTotal = 0;
         let buffer = "0";
-        let prevOperator;
+        let prevOperator = null;
 
         const screen = document.querySelector('.screen');
 
@@ -63,16 +63,19 @@
                     buffer = '0';
                     runningTotal = 0;
                     break;
-                case '&divide;':
-                    handleMath(symbol);
+                case '=':
+                    if (prevOperator === null) {
+                        return;
+                    }
+                    flushOperation(parseInt(buffer));
+                    prevOperator = null;
+                    buffer = runningTotal;
+                    runningTotal = 0;
                     break;
-                case '&times;':
-                    handleMath(symbol);
-                    break;
-                case '&minus;':
-                    handleMath(symbol);
-                    break;
-                case '&plus;':
+                case '÷':
+                case '×':
+                case '−':
+                case '+':
                     handleMath(symbol);
                     break;
             }
@@ -81,11 +84,11 @@
         function handleMath(symbol) {
             if (buffer === '0') {
                 return;
-            } else {
-                const intBuffer = parseInt(buffer);
             }
 
-            if (runningTotal === 0) {
+            const intBuffer = parseInt(buffer);
+
+            if (runningTotal == 0) {
                 runningTotal = intBuffer;
             } else {
                 flushOperation(intBuffer);
@@ -96,8 +99,18 @@
             buffer = '0';
         }
 
-        flushOperation (operator) {
-            
+        function flushOperation(intBuffer) {
+            if (prevOperator === '÷') {
+                runningTotal /= intBuffer;
+            } else if (prevOperator === '×') {
+                runningTotal *= intBuffer;
+            } else if (prevOperator === '−') {
+                runningTotal -= intBuffer;
+            } else {
+                runningTotal += intBuffer;
+            }
+
+            console.log(runningTotal);
         }
 
         function handleNumber(numberString) {
