@@ -125,11 +125,6 @@ function init() {
         })
 }
 
-let checking = setInterval(check, 1000);
-function check() {
-    console.log("Op: " + isOperatorPressed + " Eql: " + isEqualPressed);
-}
-
 init();
 
 
