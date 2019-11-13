@@ -3,6 +3,7 @@ let buffer = "0";
 let displayBuffer;
 let prevOperator = null;
 let isEqualPressed = false;
+let isOperatorPressed = false;
 
 const screen = document.querySelector('.screen');
 
@@ -25,6 +26,7 @@ function handleSymbol(symbol) {
         case 'C':
             buffer = '0';
             runningTotal = 0;
+            isOperatorPressed = true;
             break;
         case '←':
             handleDelete();
@@ -54,11 +56,16 @@ function handleEqual() {
     if (prevOperator === null) {
         return;
     }
+
     flushOperation(parseInt(buffer));
+
     prevOperator = null;
+    isOperatorPressed = false;
+
     buffer = runningTotal;
     displayBuffer = buffer;
     runningTotal = 0;
+    
     isEqualPressed = true;
 }
 
@@ -67,16 +74,16 @@ function handleMath(symbol) {
         return;
     }
 
-    const intBuffer = parseInt(buffer);
+    const floatBuffer = parseFloat(buffer);
 
     if (runningTotal == 0) {
-        runningTotal = intBuffer;
+        runningTotal = floatBuffer;
     } else {
-        flushOperation(intBuffer);
+        flushOperation(floatBuffer);
     }
 
     prevOperator = symbol;
-
+    isOperatorPressed = true;
     buffer = '0';
 
 }
@@ -91,13 +98,17 @@ function flushOperation(intBuffer) {
     } else {
         runningTotal += intBuffer;
     }
+
 }
 
 function handleNumber(numberString) {
     if (buffer === "0") {
         buffer = numberString;
-    } else if (isEqualPressed) {
+    } else if (!isOperatorPressed && isEqualPressed) {
         buffer = numberString;
+        isEqualPressed = false;
+    } else if (isEqualPressed) {
+        buffer += numberString;
         isEqualPressed = false;
     } else {
         buffer += numberString;
@@ -106,6 +117,7 @@ function handleNumber(numberString) {
     displayBuffer = buffer;
 }
 
+
 function init() {
     document.querySelector('.calc-buttons')
         .addEventListener('click', function (event) {
@@ -113,4 +125,14 @@ function init() {
         })
 }
 
+let checking = setInterval(check, 1000);
+function check() {
+    console.log("Op: " + isOperatorPressed + " Eql: " + isEqualPressed);
+}
+
 init();
+
+
+
+
+
