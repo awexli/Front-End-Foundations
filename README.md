@@ -1,3 +1,2 @@
 # FrontEnd-Foundations
-HTML/CSS  
-Javascript  
+ Misc Javascript & HTML/CSS Projects
