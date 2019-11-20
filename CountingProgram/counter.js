@@ -40,10 +40,11 @@ function countNumber() {
             numbers = counter;
         } else {
             numbers = numbers + ", " + counter;
-            displayNumbers.innerHTML = numbers;
         }
         counter = counter + 1;
     }
+    
+    displayNumbers.innerHTML = numbers;
 }
 
 function isValidName() {
