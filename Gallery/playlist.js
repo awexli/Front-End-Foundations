@@ -1,10 +1,11 @@
-let dataVideoId = ['155_EYRGyO8', 'l_mW3S9HB08', 'YEKO748WU1o', 'hXj78sr6Mzk', 'CL_BTmrrZW8'];
+let dataVideoId = ['155_EYRGyO8', 'l_mW3S9HB08', 'rLWVJstzAH8'];
 let index = 0;
 let player;
 
 const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
 const addBtn = document.querySelector('.add');
+const delBtn = document.querySelector('.del');
 
 let ytLink = document.getElementById('yt-link');
 let message = document.getElementById('msg');
@@ -47,6 +48,19 @@ addBtn.addEventListener('click', function () {
     }
 });
 
+delBtn.addEventListener('click', function () {
+    if (index > -1 && index < dataVideoId.length - 1) {
+        dataVideoId.splice(index, 1);
+        player.cueVideoById(dataVideoId[index])
+    }
+
+    if (index == dataVideoId.length - 1) {
+        nextBtn.disabled = true;
+    }
+});
+
+//-----------------------------------------------------------------------------------
+
 function addVideo() {
     dataVideoId.push(urlID());
     nextBtn.disabled = false;
@@ -88,5 +102,9 @@ function isValidLink() {
     }
 }
 
-//remove videos
+//display title of video
+//  - show list of index of links
+//  - cuevideoby index when clicking on that link
 //Check for duplicate links
+
+//cuevideobyid(videoid,startseconds,endseconds)
