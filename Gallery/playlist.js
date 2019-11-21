@@ -8,6 +8,7 @@ const addBtn = document.querySelector('.add');
 
 let ytLink = document.getElementById('yt-link');
 let message = document.getElementById('msg');
+let videoAdded = false;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -37,42 +38,55 @@ nextBtn.addEventListener('click', function () {
     }
 });
 
-
 addBtn.addEventListener('click', function () {
-
     if (isValidLink()) {
         addVideo();
+        moveToEndOfPlaylist();
         message.innerHTML = "Link Added!";
         ytLink.value = "";
     }
 });
 
-function isValidLink() {
-    try {
-        if (!ytLink.value.includes("youtu")) throw "Invalid Link";
-    } catch (err) {
-        message.innerHTML = err;
-        ytLink.focus();
-        return false;
-    }
-    return true;
+function addVideo() {
+    dataVideoId.push(urlID());
+    nextBtn.disabled = false;
 }
 
-function addVideo() {
-    nextBtn.disabled = false;
-    dataVideoId.push(urlID());
+function moveToEndOfPlaylist() {
+    index = dataVideoId.length - 1;
+    player.cueVideoById(dataVideoId[index]);
+    nextBtn.disabled = true;
+    prevBtn.disabled = false;
 }
 
 function urlID() {
     let id;
-    let longLink = ytLink.value.indexOf('=');
+    let longLink = ytLink.value.indexOf('v=');
     let shortLink = ytLink.value.indexOf('e/');
 
-    if (ytLink.value.includes("=")) {
-        id = ytLink.value.substr(longLink + 1);
+    if (ytLink.value.includes("v=")) {
+        id = ytLink.value.substr(longLink + 2);
     } else {
         id = ytLink.value.substr(shortLink + 2);
     }
 
     return id;
 }
+
+function isValidLink() {
+    let url = ytLink.value;
+    let regExp = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(\?\S*)?$/;
+    let match = url.match(regExp);
+
+    if (match) {
+        return true;
+    } else {
+        message.innerHTML = "Invalid Link";
+        ytLink.value = "";
+        ytLink.focus();
+        return false;
+    }
+}
+
+//remove videos
+//Check for duplicate links
