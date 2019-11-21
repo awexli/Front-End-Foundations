@@ -2,6 +2,13 @@ let dataVideoId = ['155_EYRGyO8', 'l_mW3S9HB08', 'YEKO748WU1o', 'hXj78sr6Mzk', '
 let index = 0;
 let player;
 
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+const addBtn = document.querySelector('.add');
+
+let ytLink = document.getElementById('yt-link');
+let message = document.getElementById('msg');
+
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         width: 600,
@@ -9,12 +16,6 @@ function onYouTubeIframeAPIReady() {
         videoId: dataVideoId[index]
     });
 }
-
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-const addBtn = document.querySelector('.add');
-
-let ytLink = document.getElementById('yt-link');
 
 prevBtn.addEventListener('click', function () {
     index--;
@@ -38,24 +39,40 @@ nextBtn.addEventListener('click', function () {
 
 
 addBtn.addEventListener('click', function () {
-    let id;
-    if (ytLink.value.includes("=")) {
-        id = regularUrl();
-    } else {
-        id = shortUrl()
+
+    if (isValidLink()) {
+        addVideo();
+        message.innerHTML = "Link Added!";
+        ytLink.value = "";
     }
-    nextBtn.disabled = false;
-    dataVideoId.push(id);
 });
 
-function regularUrl() {
-    let longLink = ytLink.value.indexOf('=');
-    let id = ytLink.value.substr(longLink + 1);
-    return id;
+function isValidLink() {
+    try {
+        if (!ytLink.value.includes("youtu")) throw "Invalid Link";
+    } catch (err) {
+        message.innerHTML = err;
+        ytLink.focus();
+        return false;
+    }
+    return true;
 }
 
-function shortUrl() {
+function addVideo() {
+    nextBtn.disabled = false;
+    dataVideoId.push(urlID());
+}
+
+function urlID() {
+    let id;
+    let longLink = ytLink.value.indexOf('=');
     let shortLink = ytLink.value.indexOf('e/');
-    let id = ytLink.value.substr(shortLink + 2);
+
+    if (ytLink.value.includes("=")) {
+        id = ytLink.value.substr(longLink + 1);
+    } else {
+        id = ytLink.value.substr(shortLink + 2);
+    }
+
     return id;
 }

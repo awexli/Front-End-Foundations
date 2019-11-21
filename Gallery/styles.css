@@ -15,7 +15,7 @@ h1 {
 }
 
 .video-gallery {
-    width: 100%;
+    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,4 +55,8 @@ h1 {
 .btn:disabled {
     background-color: #777;
     cursor: not-allowed;
+}
+
+form {
+    margin-top: 35px;
 }
