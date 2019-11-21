@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+h1 {
+    text-align: center;
+}
+
 .video {
     display: none;
 }
@@ -23,6 +27,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 15px;
 }
 
 .btn {
@@ -37,6 +42,14 @@
 
 .prev {
     margin-right: 15px;
+}
+
+.add {
+    margin-top: 15px;
+}
+
+.add-btn {
+    text-align: center;
 }
 
 .btn:disabled {

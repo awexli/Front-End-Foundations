@@ -12,6 +12,7 @@ function onYouTubeIframeAPIReady() {
 
 const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
+const addBtn = document.querySelector('.add');
 
 prevBtn.addEventListener('click', function () {
     index--;
@@ -24,12 +25,16 @@ prevBtn.addEventListener('click', function () {
 });
 
 nextBtn.addEventListener('click', function () {
-    //player.nextVideo()
     index++;
-    player.loadVideoById(dataVideoId[index])
+    player.cueVideoById(dataVideoId[index])
     prevBtn.disabled = false;
 
     if (index == dataVideoId.length - 1) {
         nextBtn.disabled = true;
     }
+});
+
+
+addBtn.addEventListener('click', function () {
+    dataVideoId.push('155_EYRGyO8');
 });

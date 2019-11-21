@@ -10,14 +10,25 @@
 </head>
 
 <body>
+    <h1>Youtube Gallery</h1>
     <div class="video-gallery">
         <div id="player"></div>
     </div>
+
     <div class="btns">
         <button disabled class="btn prev">Prev</button>
         <button class="btn next">Next</button>
     </div>
 
+    <form>
+        <div class="add-btn">
+            <label for="yt-link">Enter Youtube Link: </label>
+            <input type="text" id="yt-link">
+            <div>
+                <button class="btn add">Add Video</button>
+            </div>
+        </div>
+    </form>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="./js/gallery3.js"></script>
 </body>
