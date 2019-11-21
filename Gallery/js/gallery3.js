@@ -14,6 +14,8 @@ const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
 const addBtn = document.querySelector('.add');
 
+let ytLink = document.getElementById('yt-link');
+
 prevBtn.addEventListener('click', function () {
     index--;
     player.cueVideoById(dataVideoId[index])
@@ -36,5 +38,24 @@ nextBtn.addEventListener('click', function () {
 
 
 addBtn.addEventListener('click', function () {
-    dataVideoId.push('155_EYRGyO8');
+    let id;
+    if (ytLink.value.includes("=")) {
+        id = regularUrl();
+    } else {
+        id = shortUrl()
+    }
+    nextBtn.disabled = false;
+    dataVideoId.push(id);
 });
+
+function regularUrl() {
+    let longLink = ytLink.value.indexOf('=');
+    let id = ytLink.value.substr(longLink + 1);
+    return id;
+}
+
+function shortUrl() {
+    let shortLink = ytLink.value.indexOf('e/');
+    let id = ytLink.value.substr(shortLink + 2);
+    return id;
+}
