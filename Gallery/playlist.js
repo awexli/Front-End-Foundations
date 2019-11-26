@@ -6,14 +6,16 @@ const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
 const addBtn = document.querySelector('.add');
 const delBtn = document.querySelector('.del');
+const firstBtn = document.querySelector('.first');
+const lastBtn = document.querySelector('.last');
 
 let ytLink = document.getElementById('yt-link');
 let message = document.getElementById('msg');
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-        width: 600,
-        height: 400,
+        width: 640,
+        height: 360,
         videoId: dataVideoId[index]
     });
 }
@@ -59,7 +61,7 @@ delBtn.addEventListener('click', function () {
         dataVideoId.splice(index, 1);
         index--;
         player.cueVideoById(dataVideoId[index]);
-    } 
+    }
 
     if (index == 0) {
         prevBtn.disabled = true;
@@ -69,7 +71,31 @@ delBtn.addEventListener('click', function () {
         nextBtn.disabled = true;
     }
 
+    message.innerHTML = "Video Deleted!";
+
 });
+
+firstBtn.addEventListener('click', function () {
+    index = 0;
+    player.cueVideoById(dataVideoId[index]);
+
+    if (dataVideoId.length > 1) {
+        nextBtn.disabled = false;
+        prevBtn.disabled = true;
+    }
+
+})
+
+lastBtn.addEventListener('click', function () {
+    index = dataVideoId.length - 1;
+    player.cueVideoById(dataVideoId[index]);
+
+    if (dataVideoId.length > 1) {
+        nextBtn.disabled = true;
+        prevBtn.disabled = false;
+    }
+})
+
 //-----------------------------------------------------------------------------------
 
 function addVideo() {
