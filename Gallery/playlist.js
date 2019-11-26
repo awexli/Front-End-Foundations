@@ -9,7 +9,6 @@ const delBtn = document.querySelector('.del');
 
 let ytLink = document.getElementById('yt-link');
 let message = document.getElementById('msg');
-let videoAdded = false;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -27,6 +26,7 @@ prevBtn.addEventListener('click', function () {
     if (index == 0) {
         prevBtn.disabled = true;
     }
+    console.log("index: " + index);
 });
 
 nextBtn.addEventListener('click', function () {
@@ -37,6 +37,7 @@ nextBtn.addEventListener('click', function () {
     if (index == dataVideoId.length - 1) {
         nextBtn.disabled = true;
     }
+    console.log("index: " + index);
 });
 
 addBtn.addEventListener('click', function () {
@@ -49,16 +50,30 @@ addBtn.addEventListener('click', function () {
 });
 
 delBtn.addEventListener('click', function () {
-    if (index > -1 && index < dataVideoId.length - 1) {
+    // disgusting
+    if (index == 0 && index != dataVideoId.length - 1) {
+        console.log("enter first if");
         dataVideoId.splice(index, 1);
-        player.cueVideoById(dataVideoId[index])
+        player.cueVideoById(dataVideoId[index]);
+        console.log("new index: " + index);
+    } else if (index == dataVideoId.length - 1 && index != 0) {
+        dataVideoId.splice(index, 1);
+        index--;
+        player.cueVideoById(dataVideoId[index]);
+        nextBtn.disabled = true;
+    } else {
+        dataVideoId.splice(index, 1);
+        player.cueVideoById(dataVideoId[index]);
+    }
+
+    if (index == 0) {
+        prevBtn.disabled = true;
     }
 
     if (index == dataVideoId.length - 1) {
         nextBtn.disabled = true;
     }
 });
-
 //-----------------------------------------------------------------------------------
 
 function addVideo() {
