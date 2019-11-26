@@ -26,7 +26,6 @@ prevBtn.addEventListener('click', function () {
     if (index == 0) {
         prevBtn.disabled = true;
     }
-    console.log("index: " + index);
 });
 
 nextBtn.addEventListener('click', function () {
@@ -37,7 +36,6 @@ nextBtn.addEventListener('click', function () {
     if (index == dataVideoId.length - 1) {
         nextBtn.disabled = true;
     }
-    console.log("index: " + index);
 });
 
 addBtn.addEventListener('click', function () {
@@ -50,21 +48,18 @@ addBtn.addEventListener('click', function () {
 });
 
 delBtn.addEventListener('click', function () {
-    // disgusting
-    if (index == 0 && index != dataVideoId.length - 1) {
-        console.log("enter first if");
+    let isNotEndOfPlaylist = Boolean(index < dataVideoId.length - 1);
+    let isEndOfPlaylist = Boolean(index == dataVideoId.length - 1);
+    let hasAtleastTwoVideos = Boolean(dataVideoId.length > 1);
+
+    if (index > -1 && isNotEndOfPlaylist) {
         dataVideoId.splice(index, 1);
         player.cueVideoById(dataVideoId[index]);
-        console.log("new index: " + index);
-    } else if (index == dataVideoId.length - 1 && index != 0) {
+    } else if (isEndOfPlaylist && hasAtleastTwoVideos) {
         dataVideoId.splice(index, 1);
         index--;
         player.cueVideoById(dataVideoId[index]);
-        nextBtn.disabled = true;
-    } else {
-        dataVideoId.splice(index, 1);
-        player.cueVideoById(dataVideoId[index]);
-    }
+    } 
 
     if (index == 0) {
         prevBtn.disabled = true;
@@ -73,6 +68,7 @@ delBtn.addEventListener('click', function () {
     if (index == dataVideoId.length - 1) {
         nextBtn.disabled = true;
     }
+
 });
 //-----------------------------------------------------------------------------------
 
