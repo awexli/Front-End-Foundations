@@ -4,7 +4,6 @@
 }
 
 body {
-    
     background-color: #282828;
     color: whitesmoke;
 }
@@ -62,10 +61,12 @@ h1 {
     cursor: not-allowed;
 }
 
-form {
-    margin-top: 35px;
-}
-
 #player {
     border: 5px solid whitesmoke;
+}
+.container {
+    margin: 15px auto;
+    width: 100%;
+    text-align: center;
+    border: red 1px solid;
 }
