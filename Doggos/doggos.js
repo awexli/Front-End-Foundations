@@ -21,14 +21,15 @@ function init(BREEDS_URL) {
     addDog(INIT_URL);
 }
 
+const spinner = document.querySelector('.spinner');
+
 function addDog(doggo) {
-    //show loading spinner
+    spinner.classList.add('show');
+    img.classList.remove('show');
     fetch(doggo)
         .then(response => response.json())
         .then(data => {
             img.src = data.message;
-            img.alt = 'Cute Doggo';
-            //stop loading spinner
         });
 }
 
@@ -36,5 +37,10 @@ select.addEventListener('change', event => {
     let doggo = `https://dog.ceo/api/breed/${event.target.value}/images/random`;
     addDog(doggo);
 });
+
+img.addEventListener('load', function() {
+    spinner.classList.remove('show');
+    img.classList.add('show');
+})
 
 init(BREEDS_URL);
