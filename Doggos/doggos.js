@@ -1,6 +1,5 @@
 const BREEDS_URL = 'https://dog.ceo/api/breeds/list/all';
 const INIT_URL = 'https://dog.ceo/api/breeds/image/random';
-const doggos = document.querySelector('.doggos');
 const select = document.querySelector('.breeds');
 const img = document.querySelector('.doggo-img');
 
@@ -18,7 +17,7 @@ function init(BREEDS_URL) {
                 select.appendChild(option);
             }
         });
-        
+
     addDog(INIT_URL);
 }
 
@@ -29,7 +28,6 @@ function addDog(doggo) {
         .then(data => {
             img.src = data.message;
             img.alt = 'Cute Doggo';
-            doggos.appendChild(img);
             //stop loading spinner
         });
 }

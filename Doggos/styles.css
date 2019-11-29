@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    text-align: center;
+}
+
+.breeds {
+    margin-bottom: 1rem;
+}
+
+img {
+    width: auto;
+}
+
+@media only screen and (max-device-width: 414px) {
+    img {
+        width: 100%;
+    }
+}
