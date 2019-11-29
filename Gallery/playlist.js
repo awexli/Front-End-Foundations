@@ -11,6 +11,7 @@ const lastBtn = document.querySelector('.last');
 
 let ytLink = document.getElementById('yt-link');
 let message = document.getElementById('msg');
+let list = document.getElementById('list');
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -41,11 +42,13 @@ nextBtn.addEventListener('click', function () {
 });
 
 addBtn.addEventListener('click', function () {
+    let ytAddress = "https://www.youtube.com/watch?";
     if (isValidLink()) {
         addVideo();
         moveToEndOfPlaylist();
         message.innerHTML = "Link Added!";
         ytLink.value = "";
+        addToList();
     }
 });
 
@@ -97,6 +100,11 @@ lastBtn.addEventListener('click', function () {
 })
 
 //-----------------------------------------------------------------------------------
+
+function addToList() {
+    list.innerHTML = ytAddress + "v=" + dataVideoId[index];
+    list.href = ytAddress + "v=" + dataVideoId[index];
+}
 
 function addVideo() {
     dataVideoId.push(urlID());
