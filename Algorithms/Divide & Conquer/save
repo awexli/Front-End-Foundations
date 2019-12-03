@@ -1,0 +1,97 @@
+function mergeSort(array) {
+    let half = Math.floor(array.length / 2)
+    let L = array.slice(0, half);
+    let R = array.slice(half, array.length);
+
+    if (array.length < 2) {
+        return array;
+    }
+
+    let mergeLeft = mergeSort(L); //10
+    let mergeRight = mergeSort(R); //10
+
+    return check(mergeLeft, mergeRight)
+}
+
+// holy shit
+function check(left, right) {
+    let arr = [];
+    let i = 0;
+    let j = 0;
+
+    console.log(`[${left}] <> [${right}]`)
+    console.log('\n')
+
+    while (left.length > i || right.length > j) {
+        console.log(`${left[i]} ? ${right[j]}`)
+
+        if (left[i] < right[j]) {
+            console.log(`left smaller: push(${left[i]})`)
+            arr.push(left[i]);
+            i++
+        } else {
+            console.log(`right smaller: push(${right[j]})`)
+            arr.push(right[j]);
+            j++
+        }
+
+        //------------------------------------------------------------
+        // this whole thing can be avoided with arr.concact() & slicing
+        //------------------------------------------------------------
+        //left array empty
+        if (i === left.length) {
+            // right array has more than one element
+            if ((right.length - j) > 1) {
+                let temp = i;
+                i = j
+                j = j + 1
+                arr.push(undefinedCheck(right, i, j))
+                i = temp;
+            } else {
+                if (j !== right.length) {
+                    console.log(`left empty: push(${right[j]})`)
+                    arr.push(right[j]);
+                    j++
+                }
+            }
+        }
+        // right array empty
+        else if (j === right.length) {
+            // left array has more than one element
+            if ((left.length - i) > 1) {
+                let temp = j;
+                j = i
+                i = i + 1
+                arr.push(undefinedCheck(left, i, j))
+                j = temp;
+            } else {
+                if (i !== right.length) {
+                    console.log(`right empty: push(${left[i]})`)
+                    arr.push(left[i]);
+                    i++
+                }
+            }
+        }
+        //------------------------------------------------------------
+        console.log('\n')
+    }
+    console.log(arr)
+    console.log('\n')
+    return arr;
+}
+
+function undefinedCheck(arr, i, j) {
+    console.log('\n')
+    console.log('right greater than 1')
+    console.log(`${arr[i]} ? ${arr[j]}`)
+    if (arr[i] < arr[j]) {
+        console.log(`push ${arr[i]}`)
+        return arr[i]
+    } else {
+        console.log(`push ${arr[j]}`)
+        return arr[j]
+    }
+}
+
+//check([2], [4, 3, 6, 7])
+mergeSort([4, 1, 5, 7, 11, 3, 6, 10, 2,])
