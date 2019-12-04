@@ -11,7 +11,6 @@ const lastBtn = document.querySelector('.last');
 
 let ytLink = document.getElementById('yt-link');
 let message = document.getElementById('msg');
-let list = document.getElementById('list');
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -42,7 +41,6 @@ nextBtn.addEventListener('click', function () {
 });
 
 addBtn.addEventListener('click', function () {
-    let ytAddress = "https://www.youtube.com/watch?";
     if (isValidLink()) {
         addVideo();
         moveToEndOfPlaylist();
@@ -102,8 +100,15 @@ lastBtn.addEventListener('click', function () {
 //-----------------------------------------------------------------------------------
 
 function addToList() {
-    list.innerHTML = ytAddress + "v=" + dataVideoId[index];
-    list.href = ytAddress + "v=" + dataVideoId[index];
+    let ytAddress = "https://www.youtube.com/watch?";
+    let list = document.createElement('li');
+    let link = document.createElement('a');
+
+    link.innerHTML = ytAddress + "v=" + dataVideoId[index];
+    link.href = ytAddress + "v=" + dataVideoId[index];
+    link.target = '_blank';
+    list.append(link);
+    document.querySelector('.list').append(list);
 }
 
 function addVideo() {
@@ -147,8 +152,9 @@ function isValidLink() {
     }
 }
 
-//display title of video
-//  - show list of index of links
+// list video links
+//  - display title of video
+//  - delete video -> delete link
 //  - cuevideoby index when clicking on that link
 //Check for duplicate links
 

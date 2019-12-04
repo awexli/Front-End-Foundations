@@ -37,4 +37,4 @@ function merge(left, right) {
     return arr.concat(left.slice().concat(right.slice()));
 }
 
-mergeSort([4, 1, 5, 7, 11, 3, 6, 10, 2,]);
+console.log(mergeSort([4, 1, 5, 7, 11, 3, 6, 10, 2,]));

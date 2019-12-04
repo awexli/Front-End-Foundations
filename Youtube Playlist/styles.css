@@ -70,3 +70,9 @@ h1 {
     text-align: center;
     border: red 1px solid;
 }
+
+.list {
+    margin-top: 1rem;
+    padding: 0;
+    text-align: center;
+}
