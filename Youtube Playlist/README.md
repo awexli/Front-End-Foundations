@@ -1,4 +1,4 @@
 # Youtube Playlist  
-[Try it out] (https://jsfiddle.net/awexli/2kr4vw7p/)  
+[Try it out](https://jsfiddle.net/awexli/2kr4vw7p/)  
   
-![Text](https://i.imgur.com/EdeqRuS.gifv)  
+![](https://i.imgur.com/EdeqRuS.gif)  
