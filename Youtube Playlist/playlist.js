@@ -104,11 +104,11 @@ function addToList() {
     let list = document.createElement('li');
     let link = document.createElement('a');
 
-    link.innerHTML = ytAddress + "v=" + dataVideoId[index];
-    link.href = ytAddress + "v=" + dataVideoId[index];
-    link.target = '_blank';
-    list.append(link);
-    document.querySelector('.list').append(list);
+    // link.innerHTML = ytAddress + "v=" + dataVideoId[index];
+    // link.href = ytAddress + "v=" + dataVideoId[index];
+    // link.target = '_blank';
+    // list.append(link);
+    // document.querySelector('.list').append(list);
 }
 
 function addVideo() {
