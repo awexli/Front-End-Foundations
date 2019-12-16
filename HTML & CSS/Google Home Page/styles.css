@@ -1,0 +1,131 @@
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
+html, body{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: #5F6368;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.flex-content {
+  display: flex;
+}
+
+.container {
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.head {
+  justify-content: space-between;
+  flex: 0 1 40px;
+  /* The above is shorthand for:
+  flex-grow: 0,
+  flex-shrink: 1,
+  flex-basis: auto
+  */
+  padding-top: 1rem;
+}
+
+.head a {
+  color: #404040;
+}
+
+.content {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  flex: 1 1 auto;
+}
+
+.main {
+  border: 0px solid red;
+  margin-bottom: 25rem;
+}
+
+.google-icon {
+  background-image: url("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-bottom: 5rem;
+  padding-top: 1rem;
+}
+
+.search-bar {
+  margin-bottom: 1rem;
+}
+
+.search-bar .fa-search {
+  position: relative;
+  left: 35px;
+  font-size: 15px;
+}
+
+.search-term {
+  margin-top: 1rem;
+  border: 1px solid #DFE1E5;
+  padding-left: 40px;  
+  border-radius: 35px ;
+  width: 32rem;
+  height: 40px;
+  font-size: large;
+}
+
+.search-term:focus {
+  outline: none;
+}
+
+.search-term:hover{
+  box-shadow: 1px 1px 4px #888888;
+}
+
+button {
+  text-decoration: none;
+  border: solid 1px transparent;
+  border-radius: 3px;
+  padding: 0.6em 1em;
+  margin: 15px 5px 0 5px;
+  background-color: #F4F4F4;
+  color: #5F6368;
+  font-size: 14px;
+}
+
+button:hover {
+  border: 1px solid rgba(206, 203, 203, 0.89);
+  color: #404040;
+}
+
+footer {
+  justify-content: space-between;
+  flex: 0 1 30px;
+  padding-top: 0.5em;
+  background-color: #F2F2F2;
+  border: 1px solid #E4E4E4;
+}
+
+.first {
+  margin-left: 25px;
+}
+
+.last {
+  margin-right: 25px;
+}
+
+.padding-left{
+  margin-left: 15px;
+}
+
+.padding-right{
+  margin-right: 15px;
+}
