@@ -1,10 +1,9 @@
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
-
 html, body{
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   height: 100%;
   font-family: 'Roboto', sans-serif;
+  min-width: 800px;
 }
 
 a {
@@ -19,6 +18,7 @@ a:hover {
 
 .flex-content {
   display: flex;
+  flex-wrap: nowrap;
 }
 
 .container {
@@ -46,40 +46,69 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  flex: 1 1 auto;
 }
 
 .main {
-  border: 0px solid red;
-  margin-bottom: 25rem;
+  margin-bottom: 20%;
 }
 
 .google-icon {
-  background-image: url("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png");
+  background-image: url(https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png);
   background-repeat: no-repeat;
   background-position: center;
   padding-bottom: 5rem;
   padding-top: 1rem;
 }
 
+.fas {
+  color: #9AA0A6;
+}
+
 .search-bar {
   margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 .search-bar .fa-search {
   position: relative;
   left: 35px;
+  top: 30px;
   font-size: 15px;
+}
+
+.microphone {
+  background: url(https://web.archive.org/web/20191130234759im_/https://www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png);
+  height: 24px;
+  width: 24px;
+  background-size: 24px;
+  position: relative;
+  right: 35px;
+  top: 25px;
+  cursor: pointer;
+}
+
+.g-app {
+  color: #000;
+  cursor: pointer;
+  background-position: -132px -38px;
+  background-image: url(https://web.archive.org/web/20191130234759im_/https://ssl.gstatic.com/gb/images/i1_1967ca6a.png);
+  display: inline-block;
+  vertical-align: middle;
+  height: 30px;
+  width: 30px;
 }
 
 .search-term {
   margin-top: 1rem;
   border: 1px solid #DFE1E5;
   padding-left: 40px;  
+  padding-right: 40px;
   border-radius: 35px ;
-  width: 32rem;
+  width: 30rem;
   height: 40px;
   font-size: large;
+
 }
 
 .search-term:focus {
@@ -104,6 +133,20 @@ button {
 button:hover {
   border: 1px solid rgba(206, 203, 203, 0.89);
   color: #404040;
+  cursor: pointer;
+}
+
+.sign-in {
+  background-color: #4285F4;
+  color: white;
+  border-radius: 2px;
+  padding: 0.3em 1em;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.sign-in:hover {
+  color: white;
 }
 
 footer {
@@ -115,17 +158,25 @@ footer {
 }
 
 .first {
-  margin-left: 25px;
+  margin-left: 30px;
 }
 
 .last {
   margin-right: 25px;
 }
 
-.padding-left{
+.h-padding-left {
   margin-left: 15px;
 }
 
-.padding-right{
+.h-padding-right {
   margin-right: 15px;
+}
+
+.padding-left{
+  margin-left: 25px;
+}
+
+.padding-right{
+  margin-right: 25px;
 }
