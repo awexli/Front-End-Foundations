@@ -1,7 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .display {
   display: flex;
 }
 
 #round {
   margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+#player {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.main {
+  width: 300px;
+  margin-left: 8rem;
+  margin-top: 1rem;
 }
