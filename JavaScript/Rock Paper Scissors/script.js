@@ -1,8 +1,5 @@
 function game() {
   const button = document.querySelectorAll('.button');
-  const rock = document.querySelector('#rock');
-  const paper = document.querySelector('#paper');
-  const scissor = document.querySelector('#scissor');
 
   let round = 0;
   let playerScore = 0;
