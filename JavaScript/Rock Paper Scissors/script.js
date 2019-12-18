@@ -9,34 +9,30 @@ function game() {
   let compScore = 0;
 
   button.forEach(choice => {
-    choice.addEventListener('click', () => {
-        if (round < 5) {
-          document.getElementById("round").textContent = (round + 1);
-          round++;
-        } 
+    choice.addEventListener('click', (e) => {
+      console.log(e)
+      if (round < 5) {
+        document.getElementById("round").textContent = (round + 1);
+        round++;
+      }
+
+      if (e.target.id == 'rock') {
+        playRound(0, computerPlay());
+      }
+      if (e.target.id == 'paper') {
+        playRound(1, computerPlay());
+      }
+      if (e.target.id == 'scissor') {
+        playRound(2, computerPlay());
+      }
+
     });
   });
-  
-  rock.addEventListener('click', () => {
-    playRound(0, computerPlay());
-  })
-
-  paper.addEventListener('click', () => {
-    playRound(1, computerPlay());
-  })
-
-  scissor.addEventListener('click', () => {
-    playRound(2, computerPlay());
-  })
 
   function computerPlay() {
-    // 0 = rock
-    // 1 = paper
-    // 2 = scissors
     const min = Math.ceil(0);
     const max = Math.floor(2);
-    
-    // max and min included
+
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
@@ -118,9 +114,9 @@ function game() {
   }
 
   function disableButtons() {
-    rock.disabled = true;
-    paper.disabled = true;
-    scissor.disabled = true;
+    button.forEach(choice => {
+      choice.disabled = true;
+    });
   }
 }
 
