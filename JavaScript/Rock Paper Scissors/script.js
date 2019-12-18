@@ -11,7 +11,7 @@ function game() {
   button.forEach(choice => {
     choice.addEventListener('click', () => {
         if (round < 5) {
-          document.getElementById("round").innerHTML = (round + 1);
+          document.getElementById("round").textContent = (round + 1);
           round++;
         } 
     });
@@ -91,7 +91,7 @@ function game() {
       }
     }
   
-    document.getElementById("result").innerHTML = message;
+    document.getElementById("result").textContent = message;
   
     updateScore(playerWin);
   }
@@ -104,17 +104,17 @@ function game() {
     }
 
     if (playerScore > 2) {
-      document.getElementById("winner").innerHTML = "You Win!"
+      document.getElementById("winner").textContent = "You Win!"
       disableButtons();
     } 
 
     if (compScore > 2) {
-      document.getElementById("winner").innerHTML = "You Lose!"
+      document.getElementById("winner").textContent = "You Lose!"
       disableButtons();
     }
   
-    document.getElementById("player").innerHTML = playerScore;
-    document.getElementById("comp").innerHTML = compScore;
+    document.getElementById("player").textContent = playerScore;
+    document.getElementById("comp").textContent = compScore;
   }
 
   function disableButtons() {
