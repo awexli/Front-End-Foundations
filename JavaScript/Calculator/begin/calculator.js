@@ -10,8 +10,17 @@ const screen = document.querySelector('.screen');
 const numberButton = document.querySelectorAll('.num');
 const checkNumButton = document.querySelector('.num');
 
+function isButtonDisabled() {
+    if (checkNumButton.disabled) {
+        numberButton.forEach(num => {
+            num.disabled = false;
+        });
+    }
+}
+
 function buttonClick(value) {
     if (isNaN(value)) {
+        isButtonDisabled()
         handleSymbol(value);
     } else {
         handleNumber(value);
@@ -68,11 +77,7 @@ function handleSymbol(symbol) {
             buffer = '0';
             runningTotal = 0;
             isOperatorPressed = true;
-            if (checkNumButton.disabled) {
-                numberButton.forEach(num => {
-                    num.disabled = false;
-                });
-            }
+            isButtonDisabled()
             break;
         case '←':
             handleDelete();
@@ -127,7 +132,7 @@ function handleMath(symbol) {
     }
 
     const floatBuffer = parseFloat(buffer);
-
+    
     if (runningTotal == 0) {
         runningTotal = floatBuffer;
     } else {
@@ -189,7 +194,6 @@ function init() {
 
 init();
 
-
-
-
-
+// dont disable buttons, just fix screen
+// fix overflow for runningTotal
+// fix button overflow

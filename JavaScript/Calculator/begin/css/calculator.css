@@ -26,9 +26,9 @@ html, body {
 
 .wrapper {
     border: 10px solid black;
-    border-radius: 12px;
-    box-shadow: 5px 10px 8px #888888;
     background-color: black;
+    box-shadow: 5px 10px 8px #888888;
+    border-radius: 12px;
     width: 400px;
     color: white;
 }
@@ -45,6 +45,11 @@ html, body {
     font-family: 'Courier New', Courier, monospace;
     padding: 20px 5px;
     font-size: 40px;
+    border: 1px solid red;
+    /* overflow screen */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .calc-button {
