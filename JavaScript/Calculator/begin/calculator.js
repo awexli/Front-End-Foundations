@@ -4,6 +4,7 @@ let displayBuffer;
 let prevOperator = null;
 let isEqualPressed = false;
 let isOperatorPressed = false;
+let tempBuffer;
 
 const screen = document.querySelector('.screen');
 
@@ -98,7 +99,8 @@ function flushOperation(intBuffer) {
     } else {
         runningTotal += intBuffer;
     }
-
+    
+    runningTotal = Math.round(runningTotal * 1e11) / 1e11;
 }
 
 function handleNumber(numberString) {
@@ -116,7 +118,6 @@ function handleNumber(numberString) {
 
     displayBuffer = buffer;
 }
-
 
 function init() {
     document.querySelector('.calc-buttons')
