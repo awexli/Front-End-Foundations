@@ -7,6 +7,8 @@ let isOperatorPressed = false;
 let tempBuffer;
 
 const screen = document.querySelector('.screen');
+const numberButton = document.querySelectorAll('.num');
+const checkNumButton = document.querySelector('.num');
 
 function buttonClick(value) {
     if (isNaN(value)) {
@@ -22,12 +24,55 @@ function buttonClick(value) {
     screen.innerText = displayBuffer;
 }
 
+function keyPress(value) {
+    switch(value) {
+        case 48: 
+            value = '0';
+            break;
+        case 49:
+            value = '1';
+            break;
+        case 50:
+            value = '2';
+            break;
+        case 51:
+            value = '3';
+            break;
+        case 52:
+            value = '4';
+            break;
+        case 53:
+            value = '5';
+            break;
+        case 54:
+            value = '6';
+            break;
+        case 55:
+            value = '7';
+            break;
+        case 56:
+            value = '8';
+            break;
+        case 57:
+            value = '9';
+            break;
+        default:
+            return;
+    }
+    buttonClick(value);
+}
+
 function handleSymbol(symbol) {
     switch (symbol) {
         case 'C':
             buffer = '0';
             runningTotal = 0;
             isOperatorPressed = true;
+            if (checkNumButton.disabled) {
+                numberButton.forEach(num => {
+                    num.disabled = false;
+                });
+            }
             break;
         case '←':
             handleDelete();
@@ -50,6 +95,12 @@ function handleDelete() {
     } else {
         buffer = buffer.substr(0, buffer.length - 1);
         displayBuffer = buffer;
+    }
+
+    if (buffer.length < 12) {
+        numberButton.forEach(num => {
+            num.disabled = false;
+        });
     }
 }
 
@@ -104,6 +155,7 @@ function flushOperation(intBuffer) {
 }
 
 function handleNumber(numberString) {
+    
     if (buffer === "0") {
         buffer = numberString;
     } else if (!isOperatorPressed && isEqualPressed) {
@@ -116,6 +168,12 @@ function handleNumber(numberString) {
         buffer += numberString;
     }
 
+    if (buffer.length > 11) {
+        numberButton.forEach(num => {
+            num.disabled = true;
+        });
+    }
+
     displayBuffer = buffer;
 }
 
@@ -123,7 +181,10 @@ function init() {
     document.querySelector('.calc-buttons')
         .addEventListener('click', function (event) {
             buttonClick(event.target.innerText);
-        })
+        });
+    document.addEventListener('keydown', e => {
+            keyPress(e.keyCode);
+        });
 }
 
 init();
