@@ -20,7 +20,6 @@ function isButtonDisabled() {
 
 function buttonClick(value) {
     if (isNaN(value)) {
-        isButtonDisabled()
         handleSymbol(value);
     } else {
         handleNumber(value);
@@ -77,7 +76,6 @@ function handleSymbol(symbol) {
             buffer = '0';
             runningTotal = 0;
             isOperatorPressed = true;
-            isButtonDisabled()
             break;
         case '←':
             handleDelete();
@@ -100,12 +98,6 @@ function handleDelete() {
     } else {
         buffer = buffer.substr(0, buffer.length - 1);
         displayBuffer = buffer;
-    }
-
-    if (buffer.length < 12) {
-        numberButton.forEach(num => {
-            num.disabled = false;
-        });
     }
 }
 
@@ -172,13 +164,6 @@ function handleNumber(numberString) {
     } else {
         buffer += numberString;
     }
-
-    if (buffer.length > 11) {
-        numberButton.forEach(num => {
-            num.disabled = true;
-        });
-    }
-
     displayBuffer = buffer;
 }
 
@@ -193,7 +178,3 @@ function init() {
 }
 
 init();
-
-// dont disable buttons, just fix screen
-// fix overflow for runningTotal
-// fix button overflow
