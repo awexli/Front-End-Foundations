@@ -178,3 +178,5 @@ function init() {
 }
 
 init();
+
+//use input for screen
